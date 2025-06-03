@@ -1,0 +1,22 @@
+[
+    {
+        "model": "stripe_app.item",
+        "pk": 1,
+        "fields": {
+            "name": "Premium Coffee",
+            "description": "Finest arabica beans from Colombia",
+            "price": "12.99",
+            "currency": "USD"
+        }
+    },
+    {
+        "model": "stripe_app.item",
+        "pk": 2,
+        "fields": {
+            "name": "Designer Mug",
+            "description": "Handcrafted ceramic mug",
+            "price": "24.50",
+            "currency": "EUR"
+        }
+    }
+]
