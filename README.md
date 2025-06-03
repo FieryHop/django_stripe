@@ -22,13 +22,12 @@
 - Stripe API ключи (тестовые)
 
 ### Шаги установки
-
-1. **Клонируйте репозиторий**:
+**Клонируйте репозиторий**:
 ```bash
 git clone https://github.com/FieryHop/django_stripe
-
+```
 ## Отредактируйте .env файл, добавив ваши Stripe API ключи:
-
+```
 env
 # Stripe Keys (USD)
 STRIPE_PUBLIC_KEY_USD=Ваш публ. ключ
@@ -41,23 +40,27 @@ STRIPE_SECRET_KEY_EUR=Ваш секр. ключ
 # Django
 SECRET_KEY=ваш django секр. ключ
 DEBUG=True
-
+```
 ## Запустите контейнеры:
 
-bash
+```bash
 docker-compose up --build -d
+```
 ## Примените миграции:
 
-bash
+```bash
 docker-compose exec web python manage.py migrate
+```
 ## Загрузите тестовые данные:
 
-bash
+```bash
 docker-compose exec web python manage.py loaddata items.json
+```
 ## Создайте администратора:
 
-bash
+```bash
 docker-compose exec web python manage.py createsuperuser
+```
 ## Приложение доступно по адресу:
 http://localhost:8000
 
@@ -65,10 +68,15 @@ http://localhost:8000
 ## Основные эндпоинты
 # Эндпоинт	Метод	Описание
 /item/<id>/	GET	Страница товара с кнопкой оплаты
+
 /buy/<id>/	GET	Получение Stripe Session ID товара
+
 /order/<id>/	GET	Страница заказа с кнопкой оплаты
+
 /buy_order/<id>/	GET	Получение Stripe Session ID заказа
+
 /admin/	GET	Административная панель
+
 #Работа с товарами
 #Просмотр товара:
 
@@ -78,26 +86,26 @@ http://localhost:8000
 
 ## Оплата товара:
 
-## Нажмите "Buy"
+# Нажмите "Buy"
 
 ## Вы будете перенаправлены на страницу Stripe Checkout
 
-# Используйте тестовую карту: 4242 4242 4242 4242
+Используйте тестовую карту: 4242 4242 4242 4242
 
 ### Работа с заказами
 ## Создайте заказ через админ-панель:
 
-# Перейдите: http://localhost:8000/admin
+Перейдите: http://localhost:8000/admin
 
-# Логин: admin (по умолчанию)
+Логин: admin (по умолчанию)
 
-# Пароль: установленный при создании суперпользователя
+Пароль: установленный при создании суперпользователя
 
 ### Создайте заказ в разделе "Orders"
 
 ## Просмотр заказа:
 
-# Откройте: http://localhost:8000/order/1/
+Откройте: http://localhost:8000/order/1/
 
 # Вы увидите список товаров, общую сумму, скидки и налоги
 
@@ -110,17 +118,21 @@ http://localhost:8000
 # Примеры API запросов
 # Получить информацию о товаре:
 
-bash
+```bash
 curl http://localhost:8000/item/1/
-Получить Stripe Session ID для оплаты товара:
+```
+# Получить Stripe Session ID для оплаты товара:
 
-bash
+```bash
 curl http://localhost:8000/buy/1/
-Получить информацию о заказе:
+```
+# Получить информацию о заказе:
 
-bash
+```bash
 curl http://localhost:8000/order/1/
-Получить Stripe Session ID для оплаты заказа:
+```
+# Получить Stripe Session ID для оплаты заказа:
 
-bash
+```bash
 curl http://localhost:8000/buy_order/1/
+```
